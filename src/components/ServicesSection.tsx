@@ -11,7 +11,8 @@ import {
   Sparkles, 
   Clock, 
   TrendingUp, 
-  MessageSquare 
+  MessageSquare,
+  Code
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { ServiceItem } from "../types";
@@ -39,6 +40,22 @@ export default function ServicesSection({ showAllInitially = true }: ServicesSec
       ],
       metrics: "Average 4.1s to 1.1s speed boost",
       averageProjectTime: "5 - 9 business days",
+      category: "development"
+    },
+    {
+      id: "custom-code",
+      title: "Custom Coded Web Apps & Sites",
+      shortDescription: "Hand-crafted custom websites and web applications with custom codes, hosted with NO extra monthly hosting subscription fee.",
+      fullDescription: "Need a high-performance custom website or bespoke codebase? Unlike drag-and-drop builders (like Wix, Shopify, or Webflow) that lock you into monthly plans, websites with custom codes are hosted directly on our custom-engineered high-speed platform with NO extra hosting subscription.",
+      iconName: "Code",
+      benefits: [
+        "Lightweight, hand-coded HTML/CSS/JS, custom React, and Next.js applications",
+        "Hosted directly on our custom platform with NO extra hosting subscription",
+        "Saves hundreds of dollars per year compared to expensive drag-and-drop builders",
+        "Absolute design freedom, elite load speeds, and completely unlimited custom capabilities"
+      ],
+      metrics: "$0 Hosting Costs",
+      averageProjectTime: "6 - 12 business days",
       category: "development"
     },
     {
@@ -139,6 +156,7 @@ export default function ServicesSection({ showAllInitially = true }: ServicesSec
     const iconProps = { className: "w-6 h-6 text-blue-600" };
     switch (iconName) {
       case "Globe": return <Globe {...iconProps} />;
+      case "Code": return <Code {...iconProps} />;
       case "Mail": return <Mail {...iconProps} />;
       case "Layers": return <Layers {...iconProps} />;
       case "ShoppingBag": return <ShoppingBag {...iconProps} />;

@@ -66,7 +66,7 @@ export default function AboutSection() {
                 </div>
                 <div className="flex items-center gap-2.5">
                   <CheckCircle size={14} className="text-blue-600" />
-                  <span>WordPress, Wix & Shopify SEO Setup</span>
+                  <span>WordPress, Wix, Shopify & Custom Coded Apps</span>
                 </div>
               </div>
 
@@ -94,7 +94,7 @@ export default function AboutSection() {
                 A beautiful design means absolutely nothing if it fails to convert browsers into clients or rank where potential customers are searching. Regrettably, most standard web templates represent offline flyers that have simply been uploaded to the cloud without any SEO metadata.
               </p>
               <p>
-                At <strong className="text-zinc-950 font-bold">VibeGrowth</strong>, we operate as a specialized digital freelancer brand that bridges the gap between clean visual interfaces and search engine indexing. We combine our expertise in website development (Wix, WordPress, Shopify) with automated funnel optimization and Google Search Console indexing to build customized, scaleable web properties starting at just $80/page.
+                At <strong className="text-zinc-950 font-bold">VibeGrowth</strong>, we operate as a specialized digital freelancer brand that bridges the gap between clean visual interfaces and search engine indexing. We combine our expertise in custom coded web apps & sites (hosted with no extra subscription fees) and popular builders (Wix, WordPress, Shopify) with automated funnel optimization and Google Search Console indexing to build customized, scalable web properties starting at just $80/page.
               </p>
               <p className="font-mono text-xs sm:text-sm text-blue-600 font-extrabold lg:border-l-2 lg:border-blue-600 lg:pl-4">
                 Our mission is straightforward: to help small businesses scale with customized workflows that drive authority, index flawlessly on Google, and capture maximum lead volume.

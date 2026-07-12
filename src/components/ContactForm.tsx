@@ -47,6 +47,11 @@ export default function ContactForm({ initialProjectType = "web-design", isModal
         base = 250 + (estimateScope.webPages * 80);
         if (estimateScope.wantsSEO) base += 80;
         break;
+      case "custom-code":
+        // Custom coded apps have premium code-level development, starting at 350 plus 90 dollars per page
+        base = 350 + (estimateScope.webPages * 90);
+        if (estimateScope.wantsSEO) base += 80;
+        break;
       case "email-marketing":
         base = 300;
         if (estimateScope.wantsKlaviyo) base += 120;
@@ -78,6 +83,7 @@ export default function ContactForm({ initialProjectType = "web-design", isModal
   const getEstimatedDays = () => {
     switch (formData.projectType) {
       case "web-design": return "6 - 10 business days";
+      case "custom-code": return "6 - 12 business days";
       case "email-marketing": return "4 - 7 business days";
       case "funnel": return "5 - 8 business days";
       case "shopify": return "9 - 15 business days";
@@ -217,7 +223,7 @@ export default function ContactForm({ initialProjectType = "web-design", isModal
               <div className="space-y-3 pt-2 text-left text-xs text-zinc-700">
                 <p className="font-bold text-zinc-800 text-[11px] font-mono uppercase tracking-tighter">Tune Selected Scope Parameters:</p>
 
-                {(formData.projectType === "web-design" || formData.projectType === "shopify") && (
+                {(formData.projectType === "web-design" || formData.projectType === "shopify" || formData.projectType === "custom-code") && (
                   <div className="space-y-3 bg-zinc-50 p-3 rounded-lg border border-zinc-200">
                     <div className="flex items-center justify-between">
                       <span className="text-[11px] text-zinc-600">Number of Custom Pages: <strong className="text-blue-600">{estimateScope.webPages}</strong></span>
@@ -385,6 +391,7 @@ export default function ContactForm({ initialProjectType = "web-design", isModal
                         onChange={handleChange}
                         className="w-full px-4 py-3 bg-zinc-50 border border-zinc-200 rounded-xl text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-blue-600 focus:bg-white transition-all duration-200 cursor-pointer"
                       >
+                        <option value="custom-code">Custom Coded Web Apps & Sites ($0 Hosting)</option>
                         <option value="web-design">Website (WordPress / Wix)</option>
                         <option value="email-marketing">Email Marketing Setup (Klaviyo)</option>
                         <option value="funnel">Landing Funnel Setup</option>
