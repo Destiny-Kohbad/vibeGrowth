@@ -28,14 +28,14 @@ export default function ServicesSection({ showAllInitially = true }: ServicesSec
     {
       id: "web-design",
       title: "Website Design & Development",
-      shortDescription: "Polished, blazing fast custom websites that establish instant authority and drive sales natively.",
+      shortDescription: "Polished, blazing fast custom websites designed with optimized layouts to rank on Google search result pages.",
       fullDescription: "Your website is your 24/7 digital storefront. We craft award-winning user experiences on WordPress, Wix, and customized CMS tools. Each page is engineered with conversion optimization, SEO structure, mobile flexibility, and ultra-short loading speeds.",
       iconName: "Globe",
       benefits: [
-        "WordPress, Wix, and custom web development",
+        "WordPress, Wix, and custom web development ($80/page)",
+        "On-page Google SEO structure & meta tagging included",
         "100% responsive layout optimized for mobile-first visitors",
-        "SEO integration to attract organic, high-intent traffic",
-        "Blazing fast performance & page load optimization"
+        "Blazing fast performance & Core Web Vitals optimization"
       ],
       metrics: "Average 4.1s to 1.1s speed boost",
       averageProjectTime: "5 - 9 business days",
@@ -136,7 +136,7 @@ export default function ServicesSection({ showAllInitially = true }: ServicesSec
     : services.filter(s => s.category === activeCategory);
 
   const renderIcon = (iconName: string) => {
-    const iconProps = { className: "w-6 h-6 text-accent-teal" };
+    const iconProps = { className: "w-6 h-6 text-blue-600" };
     switch (iconName) {
       case "Globe": return <Globe {...iconProps} />;
       case "Mail": return <Mail {...iconProps} />;
@@ -149,45 +149,45 @@ export default function ServicesSection({ showAllInitially = true }: ServicesSec
   };
 
   const getWhatsAppLink = (serviceTitle: string) => {
-    const text = `Hi VibeGrowth Solution, I'm interested in your "${serviceTitle}" service! Can we discuss my project?`;
+    const text = `Hi VibeGrowth, I'm interested in your "${serviceTitle}" service! Can we discuss my project?`;
     return `https://wa.me/17042145434?text=${encodeURIComponent(text)}`;
   };
 
   return (
-    <section className="py-20 sm:py-28 relative overflow-hidden" id="services-section">
-      {/* Background orbs */}
-      <div className="absolute top-[30%] right-[-10%] w-[400px] h-[400px] bg-accent-blue/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-[20%] left-[-10%] w-[350px] h-[350px] bg-accent-purple/5 rounded-full blur-[100px] pointer-events-none" />
+    <section className="py-20 sm:py-28 relative overflow-hidden bg-white" id="services-section">
+      {/* Background soft styling hints */}
+      <div className="absolute top-[30%] right-[-10%] w-[400px] h-[400px] bg-blue-50/20 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-[20%] left-[-10%] w-[350px] h-[350px] bg-zinc-50 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent-purple/10 border border-accent-purple/20 text-accent-purple text-xs font-mono uppercase tracking-widest">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-mono uppercase tracking-widest font-bold">
             <Sparkles size={12} className="animate-pulse" />
             Our Systems & Services
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-extrabold text-zinc-950 tracking-tight">
             Digital Transformation Engineered to{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-purple to-accent-blue">
+            <span className="text-blue-600">
               Scale Your Revenue
             </span>
           </h2>
-          <p className="text-zinc-400 text-sm sm:text-base md:text-lg font-light leading-relaxed">
-            Forget standard designs that act like dynamic brochures. VibeGrowth Solution delivers performance-tuned web assets and marketing workflows designed with psychology to close deals.
+          <p className="text-zinc-600 text-sm sm:text-base md:text-lg font-normal leading-relaxed">
+            Forget standard designs that fail to convert or rank. We deliver Google-optimized web assets and marketing workflows designed with clean semantics to close clients.
           </p>
         </div>
 
-        {/* Category Filter Pills */}
+        {/* Category Filter Pills in Blue, White, Black */}
         <div className="flex flex-wrap justify-center items-center gap-2 mb-12 sm:mb-16" id="services-categories">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ${
+              className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
                 activeCategory === cat.id
-                  ? "bg-gradient-to-r from-accent-purple to-accent-blue text-white shadow-lg shadow-purple-500/10"
-                  : "bg-white/5 border border-glass text-gray-400 hover:text-white hover:bg-white/10"
+                  ? "bg-zinc-950 text-white shadow-sm"
+                  : "bg-zinc-50 border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100"
               }`}
               id={`cat-pill-${cat.id}`}
             >
@@ -196,7 +196,7 @@ export default function ServicesSection({ showAllInitially = true }: ServicesSec
           ))}
         </div>
 
-        {/* Services Grid with animations */}
+        {/* Services Grid with animations (White styling) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="services-grid">
           <AnimatePresence mode="popLayout">
             {filteredServices.map((service, i) => (
@@ -207,41 +207,38 @@ export default function ServicesSection({ showAllInitially = true }: ServicesSec
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="group relative bg-glass border border-glass hover:border-violet-500/30 rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/5 hover:-translate-y-1.5"
+                className="group relative bg-white border border-zinc-200 hover:border-blue-300 rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
                 id={`service-card-${service.id}`}
               >
-                {/* Visual Glow Effect on Hover */}
-                <div className="absolute -inset-px rounded-2xl bg-gradient-to-r from-accent-purple/0 to-accent-blue/0 group-hover:from-accent-purple/10 group-hover:to-accent-blue/10 transition duration-300 -z-10" />
-
                 <div>
                   {/* Top-row: Icon & Metrics badge */}
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-white/5 border border-glass flex items-center justify-center group-hover:bg-gradient-to-tr group-hover:from-accent-purple/20 group-hover:to-accent-teal/20 group-hover:border-violet-500/30 transition-all duration-300">
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center transition-all duration-300 group-hover:bg-blue-100">
                       {renderIcon(service.iconName)}
                     </div>
                     
                     {/* Unique conversion indicators */}
-                    <div className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-mono flex items-center gap-1">
+                    <div className="px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-[10px] font-mono font-bold flex items-center gap-1">
                       <TrendingUp size={10} />
                       {service.metrics}
                     </div>
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="text-xl font-display font-extrabold text-white group-hover:text-accent-teal transition-colors duration-200">
+                  <h3 className="text-xl font-display font-extrabold text-zinc-950 group-hover:text-blue-600 transition-colors duration-200">
                     {service.title}
                   </h3>
-                  <p className="text-zinc-400 text-xs sm:text-sm mt-3 leading-relaxed font-light">
+                  <p className="text-zinc-500 text-xs sm:text-sm mt-3 leading-relaxed font-normal">
                     {service.shortDescription}
                   </p>
 
-                  <div className="h-px bg-zinc-800/60 my-5" />
+                  <div className="h-px bg-zinc-100 my-5" />
 
                   {/* Core Benefits */}
                   <ul className="space-y-2.5 mb-6">
                     {service.benefits.map((benefit, bIndex) => (
-                      <li key={bIndex} className="flex items-start gap-2.5 text-xs text-zinc-300 font-light">
-                        <CheckCircle size={13} className="text-accent-teal mt-0.5 flex-shrink-0" />
+                      <li key={bIndex} className="flex items-start gap-2.5 text-xs text-zinc-600 font-normal">
+                        <CheckCircle size={13} className="text-blue-600 mt-0.5 flex-shrink-0" />
                         <span>{benefit}</span>
                       </li>
                     ))}
@@ -251,22 +248,22 @@ export default function ServicesSection({ showAllInitially = true }: ServicesSec
                 {/* Card CTA & Meta Footer */}
                 <div className="mt-4 space-y-4">
                   {/* Scope estimate timeframe */}
-                  <div className="flex items-center gap-2 text-zinc-500 text-xs font-mono">
+                  <div className="flex items-center gap-2 text-zinc-400 text-xs font-mono">
                     <Clock size={12} />
                     <span>Avg. Setup: {service.averageProjectTime}</span>
                   </div>
 
-                  {/* Direct Contact Button */}
+                  {/* Direct Contact Button (Blue / Black themed) */}
                   <a
                     href={getWhatsAppLink(service.title)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3 px-4 rounded-xl bg-white/5 group-hover:bg-gradient-to-r group-hover:from-accent-purple group-hover:to-accent-blue text-zinc-200 group-hover:text-white group-hover:font-extrabold font-bold text-xs inline-flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02] border border-glass cursor-pointer"
+                    className="w-full py-3 px-4 rounded-xl bg-zinc-950 text-white font-bold text-xs inline-flex items-center justify-center gap-2 transition-all duration-300 hover:bg-blue-600 cursor-pointer shadow-sm"
                     id={`service-cta-btn-${service.id}`}
                   >
-                    <MessageSquare size={13} className="fill-current/10" />
+                    <MessageSquare size={13} className="fill-white/10" />
                     Hire For {service.title}
-                    <ArrowUpRight size={13} className="text-accent-purple group-hover:text-white" />
+                    <ArrowUpRight size={13} className="text-white" />
                   </a>
                 </div>
 
@@ -275,22 +272,22 @@ export default function ServicesSection({ showAllInitially = true }: ServicesSec
           </AnimatePresence>
         </div>
 
-        {/* Dynamic quote system */}
-        <div className="mt-16 bg-glass border border-glass rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6" id="services-summary-prompt">
+        {/* Cream color section (Requested alternating background box) */}
+        <div className="mt-16 bg-[#fcfbf7] border border-zinc-200 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm" id="services-summary-prompt">
           <div className="space-y-1 text-center md:text-left">
-            <h4 className="text-base sm:text-lg font-bold text-white flex items-center justify-center md:justify-start gap-2">
-              <Sparkles size={16} className="text-accent-teal animate-pulse" />
-              Need a completely custom enterprise workflow or complex automation?
+            <h4 className="text-base sm:text-lg font-bold text-zinc-950 flex items-center justify-center md:justify-start gap-2">
+              <Sparkles size={16} className="text-blue-600 animate-pulse" />
+              Need a completely custom enterprise workflow or Google SEO campaign?
             </h4>
-            <p className="text-xs sm:text-sm text-zinc-400 font-light max-w-2xl">
-              We design multi-platform ecosystems integrating CRM triggers, customized web portals, third-party webhook integrations, and email triggers synchronized flawlessly.
+            <p className="text-xs sm:text-sm text-zinc-600 font-normal max-w-2xl">
+              We design multi-platform ecosystems integrating Google Search Console optimization, custom schema data structures, email automation sequences, and custom dashboards.
             </p>
           </div>
           <a
             href="https://wa.me/17042145434"
             target="_blank"
             rel="noopener noreferrer"
-            className="whitespace-nowrap px-6 py-3 rounded-xl bg-gradient-to-r from-accent-purple to-accent-blue text-white font-bold text-xs hover:scale-105 duration-200 shadow-md flex items-center gap-2 cursor-pointer"
+            className="whitespace-nowrap px-6 py-3 rounded-xl bg-zinc-950 hover:bg-blue-600 text-white font-bold text-xs duration-200 shadow-sm flex items-center gap-2 cursor-pointer"
             id="services-custom-query-cta"
           >
             Get Custom Free Quote

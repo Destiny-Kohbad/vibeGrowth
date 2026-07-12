@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Menu, X, PhoneCall, Code, Sparkles, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -11,7 +12,7 @@ export default function Navbar({ activeTab, setActiveTab, onOpenEstimator }: Nav
   const navItems = [
     { id: "home", label: "Home" },
     { id: "services", label: "Our Services" },
-    { id: "about", label: "About Brand" },
+    { id: "about", label: "About" },
     { id: "contact", label: "Contact & Leads" },
   ];
 
@@ -26,39 +27,29 @@ export default function Navbar({ activeTab, setActiveTab, onOpenEstimator }: Nav
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const menuState = {
-    isOpen: false,
-  };
-
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-glass bg-glass/80 backdrop-blur-md">
+    <header className="sticky top-0 z-40 w-full border-b border-zinc-200/80 bg-white/90 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 sm:h-20 items-center justify-between">
           
-          {/* Brand Logo with customized VG layout */}
+          {/* Brand Logo with customized minimalist style (No VG icon as requested) */}
           <div 
             onClick={handleLogoClick}
-            className="flex items-center gap-3 cursor-pointer group"
+            className="flex items-center gap-2 cursor-pointer group"
             id="nav-logo-container"
           >
-            <div className="relative">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-accent-purple to-accent-blue flex items-center justify-center font-display font-black text-xl text-white tracking-tighter shadow-lg shadow-violet-500/20 group-hover:scale-105 duration-200">
-                VG
-              </div>
-              <div className="absolute -inset-0.5 rounded-xl bg-gradient-to-tr from-accent-purple to-accent-blue opacity-30 blur-sm group-hover:opacity-75 transition duration-300" />
-            </div>
             <div className="flex flex-col">
-              <span className="font-display font-extrabold text-sm sm:text-base tracking-tight text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-violet-400 group-hover:to-cyan-400 transition-all duration-300">
-                VIBEGROWTH
+              <span className="font-display font-extrabold text-base sm:text-lg tracking-tight text-zinc-950 group-hover:text-blue-600 transition-colors duration-300">
+                VibeGrowth
               </span>
-              <span className="font-mono text-[10px] tracking-[0.25em] text-accent-teal uppercase">
-                SOLUTION
+              <span className="font-mono text-[9px] tracking-[0.18em] text-blue-600 uppercase font-bold">
+                Small Business Scale
               </span>
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 bg-white/5 border border-glass rounded-full px-2 py-1" id="desktop-nav">
+          <nav className="hidden md:flex items-center gap-1 bg-zinc-50 border border-zinc-200/60 rounded-full px-2 py-1" id="desktop-nav">
             {navItems.map((item) => {
               const isActive = activeTab === item.id;
               return (
@@ -68,15 +59,15 @@ export default function Navbar({ activeTab, setActiveTab, onOpenEstimator }: Nav
                     setActiveTab(item.id);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className={`relative px-4 py-2 rounded-full font-medium text-xs sm:text-sm tracking-wide transition-all duration-300 cursor-pointer ${
-                    isActive ? "text-white" : "text-gray-400 hover:text-white"
+                  className={`relative px-4 py-2 rounded-full font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 cursor-pointer ${
+                    isActive ? "text-blue-600" : "text-zinc-600 hover:text-zinc-900"
                   }`}
                   id={`nav-item-${item.id}`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="active-nav-bg"
-                      className="absolute inset-0 bg-gradient-to-r from-accent-purple/30 to-accent-blue/30 border border-violet-500/20 rounded-full -z-10"
+                      className="absolute inset-0 bg-blue-50/80 border border-blue-100/60 rounded-full -z-10"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -91,10 +82,10 @@ export default function Navbar({ activeTab, setActiveTab, onOpenEstimator }: Nav
             {onOpenEstimator && (
               <button
                 onClick={onOpenEstimator}
-                className="px-4 py-2 rounded-xl bg-white/5 border border-glass text-xs font-semibold hover:bg-white/10 text-accent-teal inline-flex items-center gap-1.5 transition-all"
+                className="px-4 py-2 rounded-xl bg-white border border-zinc-200 text-xs font-semibold hover:bg-zinc-50 text-zinc-800 inline-flex items-center gap-1.5 transition-all cursor-pointer shadow-sm"
                 id="navbar-estimator-btn"
               >
-                <Sparkles size={13} className="text-accent-teal animate-pulse" />
+                <Sparkles size={13} className="text-blue-600 animate-pulse" />
                 Cost Estimator
               </button>
             )}
@@ -103,11 +94,11 @@ export default function Navbar({ activeTab, setActiveTab, onOpenEstimator }: Nav
               href="https://wa.me/17042145434"
               target="_blank"
               rel="noopener noreferrer"
-              className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-accent-purple to-accent-blue hover:from-accent-purple/90 hover:to-accent-blue/90 text-white font-bold text-xs inline-flex items-center gap-2 transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-md shadow-purple-500/10 cursor-pointer"
+              className="py-2.5 px-4 rounded-xl bg-zinc-950 hover:bg-blue-600 text-white font-bold text-xs inline-flex items-center gap-2 transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-sm cursor-pointer"
               id="navbar-whatsapp-cta"
             >
               <MessageSquare size={14} className="fill-white/10" />
-              Hire Us Free Consult
+              Free SEO Consult
             </a>
           </div>
 
@@ -126,7 +117,6 @@ export default function Navbar({ activeTab, setActiveTab, onOpenEstimator }: Nav
 }
 
 // Inner helper client Component for handling mobile toggle state cleanly in React
-import { useState } from "react";
 function MobileNavToggle({ navItems, activeTab, handleMobileClick, onOpenEstimator }: {
   navItems: Array<{id: string, label: string}>,
   activeTab: string,
@@ -141,7 +131,7 @@ function MobileNavToggle({ navItems, activeTab, handleMobileClick, onOpenEstimat
       {onOpenEstimator && (
         <button
           onClick={onOpenEstimator}
-          className="px-3 py-1.5 rounded-lg bg-indigo-500/20 border border-glass text-[11px] font-semibold text-accent-teal flex items-center gap-1"
+          className="px-3 py-1.5 rounded-lg bg-blue-50 border border-blue-100 text-[11px] font-semibold text-blue-600 flex items-center gap-1 cursor-pointer"
           id="mobile-quick-estimator-btn"
         >
           <Sparkles size={11} />
@@ -151,7 +141,7 @@ function MobileNavToggle({ navItems, activeTab, handleMobileClick, onOpenEstimat
 
       <button
         onClick={toggleMenu}
-        className="p-2 rounded-xl bg-white/5 border border-glass text-gray-400 hover:text-white transition-colors"
+        className="p-2 rounded-xl bg-zinc-50 border border-zinc-200 text-zinc-600 hover:text-zinc-900 transition-colors cursor-pointer"
         id="mobile-menu-trigger"
         aria-label="Toggle navigation menu"
       >
@@ -164,7 +154,7 @@ function MobileNavToggle({ navItems, activeTab, handleMobileClick, onOpenEstimat
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute top-16 left-0 right-0 border-b border-glass bg-glass-heavy backdrop-blur-xl px-4 py-5 space-y-3 shadow-2xl z-50 auto-close"
+            className="absolute top-16 left-0 right-0 border-b border-zinc-200 bg-white px-4 py-5 space-y-3 shadow-2xl z-50 auto-close"
             id="mobile-dropdown-menu"
           >
             <div className="flex flex-col gap-1.5">
@@ -176,32 +166,32 @@ function MobileNavToggle({ navItems, activeTab, handleMobileClick, onOpenEstimat
                     onClick={() => handleMobileClick(item.id, toggleMenu)}
                     className={`w-full text-left px-4 py-3 rounded-xl font-medium text-sm transition-all flex items-center justify-between ${
                       isActive 
-                        ? "bg-gradient-to-r from-accent-purple/20 to-accent-blue/20 text-white border-l-4 border-accent-purple" 
-                        : "text-gray-400 hover:bg-white/5 hover:text-white"
+                        ? "bg-blue-50 text-blue-600 border-l-4 border-blue-600 font-bold" 
+                        : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900"
                     }`}
                     id={`mobile-nav-item-${item.id}`}
                   >
                     {item.label}
-                    {isActive && <div className="w-1.5 h-1.5 rounded-full bg-accent-purple" />}
+                    {isActive && <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />}
                   </button>
                 );
               })}
             </div>
 
-            <div className="pt-3 border-t border-glass flex flex-col gap-2">
+            <div className="pt-3 border-t border-zinc-100 flex flex-col gap-2">
               <a
                 href="https://wa.me/17042145434"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={toggleMenu}
-                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-accent-purple to-accent-blue hover:from-accent-purple/90 hover:to-accent-blue/90 text-white font-bold text-xs flex items-center justify-center gap-2"
+                className="w-full py-3 px-4 rounded-xl bg-zinc-950 hover:bg-blue-600 text-white font-bold text-xs flex items-center justify-center gap-2"
                 id="mobile-cta-whatsapp"
               >
                 <PhoneCall size={14} />
                 WhatsApp Direct: +17042145434
               </a>
-              <p className="text-[11px] text-gray-500 text-center">
-                VibeGrowth Solution &bull; Digital Freelancer
+              <p className="text-[11px] text-zinc-500 text-center">
+                VibeGrowth &bull; Helping Small Businesses Scale
               </p>
             </div>
           </motion.div>
