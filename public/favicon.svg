@@ -19,6 +19,9 @@
     </filter>
   </defs>
 
+  <!-- Solid white background matching the requested favicon style -->
+  <rect width="300" height="300" fill="#ffffff" />
+
   <g filter="url(#drop-shadow)">
     <!-- The V-shaped Swoop Checkmark -->
     <!-- Hand-designed bezier curves replicating the precise 3D swooshing motion -->

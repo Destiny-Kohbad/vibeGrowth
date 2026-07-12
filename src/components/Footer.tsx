@@ -29,7 +29,9 @@ export default function Footer({ onSetActiveTab, activeTab }: FooterProps) {
           {/* Brand Identity */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <VibeGrowthLogo size={36} />
+              <div className="bg-white p-1.5 rounded-lg flex items-center justify-center shadow-sm shrink-0">
+                <VibeGrowthLogo size={28} />
+              </div>
               <div className="flex flex-col">
                 <span className="font-display font-extrabold text-sm tracking-tight text-white uppercase">VIBEGROWTH</span>
                 <span className="font-mono text-[9px] tracking-widest text-blue-500 uppercase font-bold">SOLUTION</span>
