@@ -2,6 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Fix for "Cannot set property fetch of #<Window> which has only a getter" in sandboxed iframe environments
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          var activeFetch = originalFetch;
+          Object.defineProperty(window, 'fetch', {
+            get: function() {
+              return activeFetch;
+            },
+            set: function(value) {
+              activeFetch = value;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          console.warn('Failed to define fetch property setter:', e);
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Core SEO Optimization Meta Tags -->
