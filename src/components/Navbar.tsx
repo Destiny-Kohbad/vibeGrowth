@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X, PhoneCall, Code, Sparkles, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import VibeGrowthLogo from "./VibeGrowthLogo";
 
 interface NavbarProps {
   activeTab: string;
@@ -32,12 +33,13 @@ export default function Navbar({ activeTab, setActiveTab, onOpenEstimator }: Nav
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 sm:h-20 items-center justify-between">
           
-          {/* Brand Logo with customized minimalist style (No VG icon as requested) */}
+          {/* Brand Logo with VibeGrowth icon */}
           <div 
             onClick={handleLogoClick}
-            className="flex items-center gap-2 cursor-pointer group"
+            className="flex items-center gap-3 cursor-pointer group"
             id="nav-logo-container"
           >
+            <VibeGrowthLogo size={42} className="group-hover:scale-105 transition-transform duration-300" />
             <div className="flex flex-col">
               <span className="font-display font-extrabold text-base sm:text-lg tracking-tight text-zinc-950 group-hover:text-blue-600 transition-colors duration-300">
                 VibeGrowth

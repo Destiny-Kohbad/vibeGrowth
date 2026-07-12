@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { MessageCircle, X, Send, Award, CheckCircle } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import VibeGrowthLogo from "./VibeGrowthLogo";
 
 export default function FloatingWhatsApp() {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,9 +78,9 @@ export default function FloatingWhatsApp() {
             <div className="p-4 bg-zinc-950 text-white border-b border-zinc-900 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  {/* Clean avatar with V logo */}
-                  <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center font-display font-semibold text-white tracking-widest">
-                    V
+                  {/* Clean avatar with VibeGrowth logo */}
+                  <div className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center">
+                    <VibeGrowthLogo size={28} />
                   </div>
                   <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-500 border-2 border-zinc-950" />
                 </div>

@@ -1,0 +1,80 @@
+import React from "react";
+
+interface VibeGrowthLogoProps {
+  className?: string;
+  size?: number | string;
+}
+
+export default function VibeGrowthLogo({ className = "", size = 32 }: VibeGrowthLogoProps) {
+  return (
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 300 300" 
+      width={size} 
+      height={size} 
+      className={`inline-block ${className}`}
+      id="vibegrowth-logo-svg"
+    >
+      <defs>
+        {/* Vibrant blue gradient for the checkmark swoop */}
+        <linearGradient id="logo-checkmark-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#025eff" />
+          <stop offset="50%" stopColor="#0080ff" />
+          <stop offset="100%" stopColor="#00c0ff" />
+        </linearGradient>
+        
+        {/* 3D gradient for the bar charts */}
+        <linearGradient id="logo-bar-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#004eff" />
+          <stop offset="100%" stopColor="#33ccff" />
+        </linearGradient>
+        
+        {/* Drop shadow filter for premium depth */}
+        <filter id="logo-drop-shadow" x="-10%" y="-10%" width="130%" height="130%">
+          <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#004eff" floodOpacity={0.25} />
+        </filter>
+      </defs>
+
+      <g filter="url(#logo-drop-shadow)">
+        {/* The V-shaped Swoop Checkmark */}
+        {/* Hand-designed bezier curves replicating the precise 3D swooshing motion */}
+        <path d="M 50 148 
+                 C 50 148, 70 140, 90 170 
+                 C 110 200, 120 230, 128 228 
+                 C 135 225, 175 185, 210 145 
+                 C 230 120, 248 135, 235 155 
+                 C 210 195, 168 245, 142 265 
+                 C 125 278, 112 265, 98 235 
+                 C 85 205, 65 160, 50 148 Z" 
+              fill="url(#logo-checkmark-grad)" />
+              
+        <path d="M 128 228
+                 C 130 220, 185 155, 245 132
+                 C 252 130, 252 142, 240 155
+                 C 190 210, 142 265, 142 265
+                 Z" 
+              fill="#005eff" opacity={0.8} />
+
+        {/* Three growing bars of the bar-chart (slanted polygons representing 3D bars) */}
+        {/* Bar 1 (Short) */}
+        <polygon points="122,170 142,160 142,215 122,225" fill="url(#logo-bar-grad)" />
+        
+        {/* Bar 2 (Medium) */}
+        <polygon points="152,125 172,115 172,190 152,205" fill="url(#logo-bar-grad)" />
+        
+        {/* Bar 3 (Tall) */}
+        <polygon points="182,75 202,65 202,158 182,175" fill="url(#logo-bar-grad)" />
+
+        {/* Curved arc of growing dots overhead */}
+        <circle cx="118" cy="158" r="4.5" fill="#33ccff" />
+        <circle cx="126" cy="136" r="5" fill="#2ebfff" />
+        <circle cx="137" cy="116" r="5.5" fill="#29b3ff" />
+        <circle cx="151" cy="98" r="6" fill="#1f9eff" />
+        <circle cx="169" cy="83" r="6.5" fill="#148aff" />
+        <circle cx="190" cy="71" r="7" fill="#0a75ff" />
+        <circle cx="214" cy="63" r="7.5" fill="#0060ff" />
+        <circle cx="240" cy="58" r="8" fill="#004eff" />
+      </g>
+    </svg>
+  );
+}

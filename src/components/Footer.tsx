@@ -1,4 +1,5 @@
 import { Mail, MessageSquare, ArrowUp, Sparkles, MapPin, Award } from "lucide-react";
+import VibeGrowthLogo from "./VibeGrowthLogo";
 
 interface FooterProps {
   onSetActiveTab: (tab: string) => void;
@@ -28,6 +29,7 @@ export default function Footer({ onSetActiveTab, activeTab }: FooterProps) {
           {/* Brand Identity */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
+              <VibeGrowthLogo size={36} />
               <div className="flex flex-col">
                 <span className="font-display font-extrabold text-sm tracking-tight text-white uppercase">VIBEGROWTH</span>
                 <span className="font-mono text-[9px] tracking-widest text-blue-500 uppercase font-bold">SOLUTION</span>

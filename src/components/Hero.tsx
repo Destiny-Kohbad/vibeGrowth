@@ -1,5 +1,6 @@
 import { MessageSquare, ArrowRight, Zap, Play, Sparkles, CheckCircle2, TrendingUp } from "lucide-react";
 import { motion } from "motion/react";
+import VibeGrowthLogo from "./VibeGrowthLogo";
 
 interface HeroProps {
   onSetActiveTab: (tab: string) => void;
@@ -40,7 +41,7 @@ export default function Hero({ onSetActiveTab, onOpenEstimator }: HeroProps) {
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600"
               id="hero-tagline-badge"
             >
-              <Sparkles size={14} className="text-blue-600 animate-pulse" />
+              <VibeGrowthLogo size={16} />
               <span className="font-mono text-xs font-bold tracking-wider uppercase">
                 Premium Growth & SEO Studio
               </span>
