@@ -9,9 +9,11 @@ async function startServer() {
 
   // Helper to replace staging URLs and make relative Open Graph tags absolute
   function resolveMetaTags(html: string, host: string, protocol: string): string {
-    // Prefer APP_URL environment variable if set, otherwise use request parameters
+    // Dynamically build origin based on current host of request to support public preview / custom domains
     let origin = `${protocol}://${host}`;
-    if (process.env.APP_URL) {
+    
+    // Fallback to APP_URL only if host is not provided
+    if (!host && process.env.APP_URL) {
       origin = process.env.APP_URL.replace(/\/$/, ""); // Trim trailing slash
     }
     
