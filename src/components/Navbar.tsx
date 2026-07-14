@@ -14,17 +14,20 @@ export default function Navbar({ activeTab, setActiveTab, onOpenEstimator }: Nav
     { id: "home", label: "Home" },
     { id: "services", label: "Our Services" },
     { id: "about", label: "About" },
+    { id: "blog", label: "Blog Insights" },
     { id: "contact", label: "Contact & Leads" },
   ];
 
   const handleMobileClick = (tabId: string, toggleMenu: () => void) => {
     setActiveTab(tabId);
+    window.location.hash = `#${tabId}`;
     toggleMenu();
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleLogoClick = () => {
     setActiveTab("home");
+    window.location.hash = "#home";
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -59,6 +62,7 @@ export default function Navbar({ activeTab, setActiveTab, onOpenEstimator }: Nav
                   key={item.id}
                   onClick={() => {
                     setActiveTab(item.id);
+                    window.location.hash = `#${item.id}`;
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
                   className={`relative px-4 py-2 rounded-full font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 cursor-pointer ${

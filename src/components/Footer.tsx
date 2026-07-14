@@ -15,6 +15,7 @@ export default function Footer({ onSetActiveTab, activeTab }: FooterProps) {
     { id: "home", label: "Home Base" },
     { id: "services", label: "System Services" },
     { id: "about", label: "Brand Values" },
+    { id: "blog", label: "Blog Insights" },
     { id: "contact", label: "Request Proposal" }
   ];
 
@@ -57,6 +58,7 @@ export default function Footer({ onSetActiveTab, activeTab }: FooterProps) {
                   <button
                     onClick={() => {
                       onSetActiveTab(item.id);
+                      window.location.hash = `#${item.id}`;
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
                     className={`text-xs hover:text-white transition-all cursor-pointer ${

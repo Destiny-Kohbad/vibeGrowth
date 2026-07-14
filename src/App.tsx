@@ -23,10 +23,33 @@ import ContactForm from "./components/ContactForm";
 import AboutSection from "./components/AboutSection";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import Footer from "./components/Footer";
+import BlogSection from "./components/BlogSection";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>("home");
   const [isEstimatorOpen, setIsEstimatorOpen] = useState<boolean>(false);
+
+  // Read hash on mount and listen to changes to allow routing (e.g. #blog, #services, #about)
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash.startsWith("#blog")) {
+        setActiveTab("blog");
+      } else if (hash === "#services") {
+        setActiveTab("services");
+      } else if (hash === "#about") {
+        setActiveTab("about");
+      } else if (hash === "#contact") {
+        setActiveTab("contact");
+      } else if (hash === "#home" || !hash) {
+        setActiveTab("home");
+      }
+    };
+
+    handleHashChange(); // Run on mount
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
 
   // Auto-scroll to top when active tab changes
   useEffect(() => {
@@ -129,6 +152,22 @@ export default function App() {
             >
               {/* Main detailed lead scoring contact form with individual sliders */}
               <ContactForm />
+            </motion.div>
+          )}
+
+          {activeTab === "blog" && (
+            <motion.div
+              key="blog-page"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.4 }}
+              id="blog-view"
+            >
+              <BlogSection onContactClick={() => {
+                setActiveTab("contact");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }} />
             </motion.div>
           )}
         </AnimatePresence>
@@ -245,6 +284,7 @@ function BottomActionBanner({ onSetActiveTab }: { onSetActiveTab: (tab: string) 
             <button
               onClick={() => {
                 onSetActiveTab("contact");
+                window.location.hash = "#contact";
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
               className="w-full sm:w-auto px-8 py-4 bg-white border border-zinc-200 text-zinc-800 font-bold text-xs sm:text-sm rounded-xl hover:bg-zinc-100 duration-200 cursor-pointer shadow-sm"

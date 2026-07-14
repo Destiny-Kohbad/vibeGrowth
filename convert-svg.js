@@ -38,6 +38,20 @@ async function convert() {
         .toFile("./public/favicon-32x32.png");
       console.log("✓ Successfully created public/favicon-32x32.png (32x32)");
 
+      // 2b. Convert favicon SVG to 48x48 named PNG (Google Search recommended size)
+      await sharp(faviconSvgPath)
+        .resize(48, 48)
+        .png()
+        .toFile("./public/favicon-48x48.png");
+      console.log("✓ Successfully created public/favicon-48x48.png (48x48)");
+
+      // 2c. Convert favicon SVG to 96x96 named PNG (Google Search recommended size)
+      await sharp(faviconSvgPath)
+        .resize(96, 96)
+        .png()
+        .toFile("./public/favicon-96x96.png");
+      console.log("✓ Successfully created public/favicon-96x96.png (96x96)");
+
       // 3. Convert favicon SVG to 192x192 PNG for Android/Chrome
       await sharp(faviconSvgPath)
         .resize(192, 192)
