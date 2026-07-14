@@ -35,6 +35,44 @@ async function startServer() {
     res.json({ status: "ok" });
   });
 
+  // Helper to get static paths
+  const getStaticFilePath = (filename: string): string => {
+    if (process.env.NODE_ENV === "production") {
+      return path.join(process.cwd(), "dist", filename);
+    }
+    return path.join(process.cwd(), "public", filename);
+  };
+
+  // Serve robots.txt dynamically with fallback
+  app.get("/robots.txt", (req, res) => {
+    const filePath = getStaticFilePath("robots.txt");
+    if (fs.existsSync(filePath)) {
+      res.type("text/plain").sendFile(filePath);
+    } else {
+      res.type("text/plain").send("User-agent: *\nAllow: /\n\nSitemap: https://vibegrowthsolution.com/sitemap.xml");
+    }
+  });
+
+  // Serve sitemap.xml dynamically with fallback
+  app.get("/sitemap.xml", (req, res) => {
+    const filePath = getStaticFilePath("sitemap.xml");
+    if (fs.existsSync(filePath)) {
+      res.type("application/xml").sendFile(filePath);
+    } else {
+      res.status(404).send("Sitemap not found");
+    }
+  });
+
+  // Serve manifest.json dynamically with fallback
+  app.get("/manifest.json", (req, res) => {
+    const filePath = getStaticFilePath("manifest.json");
+    if (fs.existsSync(filePath)) {
+      res.type("application/json").sendFile(filePath);
+    } else {
+      res.status(404).send("Manifest not found");
+    }
+  });
+
   if (process.env.NODE_ENV !== "production") {
     // Development mode with Vite Dev Server middleware
     const vite = await createViteServer({

@@ -77,7 +77,7 @@ export default function App() {
           "@type": "BlogPosting",
           "headline": "Introducing VibeGrowth Solution: Leading Custom Web Systems & Funnels under CEO Destiny Ayeni",
           "description": "VibeGrowth Solution, under the leadership of Founder & CEO Destiny Ayeni, establishes a new standard for custom-coded, high-performance web systems and automated triggers.",
-          "image": `${origin}/social-preview.png`,
+          "image": `${origin}/logo.png`,
           "datePublished": "2026-07-14",
           "url": url,
           "author": {
@@ -90,7 +90,7 @@ export default function App() {
             "name": "VibeGrowth Solution",
             "logo": {
               "@type": "ImageObject",
-              "url": `${origin}/favicon-512x512.png`
+              "url": `${origin}/logo.png`
             }
           }
         };
@@ -109,7 +109,7 @@ export default function App() {
           "@type": "BlogPosting",
           "headline": title,
           "description": desc,
-          "image": `${origin}/social-preview.png`,
+          "image": `${origin}/logo.png`,
           "datePublished": "2026-07-14",
           "url": url,
           "author": {
@@ -132,7 +132,7 @@ export default function App() {
             "@type": "ProfessionalService",
             "name": "VibeGrowth Solution",
             "url": origin,
-            "logo": `${origin}/favicon-512x512.png`
+            "logo": `${origin}/logo.png`
           }
         };
       } else if (activeTab === "services") {
@@ -147,7 +147,7 @@ export default function App() {
             "name": "VibeGrowth Solution",
             "alternateName": ["vibegrowthsolution", "Vibegrowth Solution"],
             "url": origin,
-            "logo": `${origin}/favicon-512x512.png`
+            "logo": `${origin}/logo.png`
           },
           "serviceType": "Custom Web Systems & Automation Design",
           "name": "VibeGrowth Engineering Services",
@@ -165,7 +165,7 @@ export default function App() {
             "name": "Destiny Ayeni",
             "jobTitle": "Founder & CEO of VibeGrowth Solution",
             "description": "Destiny Ayeni is the CEO of VibeGrowth Solution, designing custom digital ecosystems and automations that transform standard websites into acquisition assets.",
-            "image": `${origin}/favicon-512x512.png`
+            "image": `${origin}/logo.png`
           },
           "publisher": {
             "@type": "ProfessionalService",
@@ -200,8 +200,8 @@ export default function App() {
           "alternateName": ["vibegrowthsolution", "Vibegrowth Solution"],
           "description": "VibeGrowth Solution, led by Founder & CEO Destiny Ayeni, builds custom-coded web systems, interactive lead estimators, and automated marketing flows.",
           "url": origin,
-          "logo": `${origin}/favicon-512x512.png`,
-          "image": `${origin}/social-preview.png`,
+          "logo": `${origin}/logo.png`,
+          "image": `${origin}/logo.png`,
           "telephone": "+17042145434",
           "priceRange": "$$",
           "address": {
@@ -218,10 +218,10 @@ export default function App() {
           }
         };
       }
-
+ 
       // Apply to document
       document.title = title;
-
+ 
       const updateMeta = (attribute: string, attrValue: string, content: string) => {
         let el = document.querySelector(`meta[${attribute}="${attrValue}"]`);
         if (!el) {
@@ -231,17 +231,17 @@ export default function App() {
         }
         el.setAttribute("content", content);
       };
-
+ 
       updateMeta("name", "description", desc);
       updateMeta("property", "og:title", title);
       updateMeta("property", "og:description", desc);
       updateMeta("property", "og:url", url);
-      updateMeta("property", "og:image", `${origin}/social-preview.png`);
+      updateMeta("property", "og:image", `${origin}/logo.png`);
       
       updateMeta("name", "twitter:title", title);
       updateMeta("name", "twitter:description", desc);
       updateMeta("name", "twitter:url", url);
-      updateMeta("name", "twitter:image", `${origin}/social-preview.png`);
+      updateMeta("name", "twitter:image", `${origin}/logo.png`);
 
       // Update Canonical Link
       let canonical = document.querySelector('link[rel="canonical"]');

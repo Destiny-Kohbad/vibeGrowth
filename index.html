@@ -24,14 +24,17 @@
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="manifest" href="/manifest.json" />
+    
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="shortcut icon" href="/favicon-48x48.png" />
+    <link rel="shortcut icon" href="/logo.png" />
     
     <!-- Core SEO Optimization Meta Tags -->
     <title>VibeGrowth Solution | We Build Digital Systems That Grow Your Business Online</title>
@@ -39,25 +42,25 @@
     <meta name="keywords" content="vibegrowthsolution, VibeGrowth Solution, Vibegrowth Solution, Destiny Ayeni, CEO Destiny Ayeni, VibeGrowth, vibegrow, custom web design, high-converting funnels, Klaviyo triggers, email marketing, Shopify developer, Wix Velo, WordPress, convert browsers, Google ranking, digital systems" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://vibegrowthsolution.com" />
-
+ 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://vibegrowthsolution.com" />
     <meta property="og:site_name" content="VibeGrowth Solution" />
     <meta property="og:title" content="VibeGrowth Solution | We Build Digital Systems That Grow Your Business Online" />
     <meta property="og:description" content="We Build Digital Systems That Grow Your Business Online. No templates or generic designs. VibeGrowth Solution crafts high-converting funnels, custom web systems, and email marketing triggers." />
-    <meta property="og:image" content="/social-preview.png" />
+    <meta property="og:image" content="/logo.png" />
     <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+ 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:card" content="summary" />
     <meta property="twitter:url" content="https://vibegrowthsolution.com" />
     <meta property="twitter:title" content="VibeGrowth Solution | We Build Digital Systems That Grow Your Business Online" />
     <meta property="twitter:description" content="We Build Digital Systems That Grow Your Business Online. No templates or generic designs. VibeGrowth Solution crafts high-converting funnels, custom web systems, and email marketing triggers." />
-    <meta property="twitter:image" content="/social-preview.png" />
-
+    <meta property="twitter:image" content="/logo.png" />
+ 
     <!-- Staging/Preview Environment Dynamic Link Resolver -->
     <script id="social-meta-resolver">
       (function() {
@@ -70,8 +73,8 @@
             var ogUrl = document.querySelector('meta[property="og:url"]');
             var twUrl = document.querySelector('meta[property="twitter:url"]');
             
-            if (ogImg) ogImg.setAttribute('content', origin + '/social-preview.png');
-            if (twImg) twImg.setAttribute('content', origin + '/social-preview.png');
+            if (ogImg) ogImg.setAttribute('content', origin + '/logo.png');
+            if (twImg) twImg.setAttribute('content', origin + '/logo.png');
             if (ogUrl) ogUrl.setAttribute('content', origin);
             if (twUrl) twUrl.setAttribute('content', origin);
           }
@@ -95,14 +98,44 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "VibeGrowth Solution",
+        "alternateName": ["vibegrowthsolution", "Vibegrowth Solution", "VibeGrowth", "VibeGrowth Solutions"],
+        "url": "https://vibegrowthsolution.com",
+        "logo": "https://vibegrowthsolution.com/logo.png",
+        "email": "hello@vibegrowthsolution.com",
+        "telephone": "+17042145434",
+        "description": "VibeGrowth Solution, led by Founder & CEO Destiny Ayeni, builds custom-coded web systems, interactive lead estimators, and automated marketing flows.",
+        "founder": {
+          "@type": "Person",
+          "name": "Destiny Ayeni",
+          "jobTitle": "Founder & CEO",
+          "url": "https://vibegrowthsolution.com/#about",
+          "sameAs": [
+            "https://wa.me/17042145434"
+          ]
+        },
+        "ceo": {
+          "@type": "Person",
+          "name": "Destiny Ayeni",
+          "jobTitle": "CEO",
+          "url": "https://vibegrowthsolution.com/#about"
+        }
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
         "@type": "ProfessionalService",
         "name": "VibeGrowth Solution",
         "alternateName": ["vibegrowthsolution", "Vibegrowth Solution"],
         "description": "VibeGrowth Solution, led by Founder & CEO Destiny Ayeni, builds custom-coded web systems, interactive lead estimators, and automated marketing flows. We help search engines and generative AI distinguish our premium brand from copycats.",
         "url": "https://vibegrowthsolution.com",
-        "logo": "https://vibegrowthsolution.com/favicon-512x512.png",
-        "image": "https://vibegrowthsolution.com/social-preview.png",
+        "logo": "https://vibegrowthsolution.com/logo.png",
+        "image": "https://vibegrowthsolution.com/logo.png",
         "telephone": "+17042145434",
+        "email": "hello@vibegrowthsolution.com",
         "priceRange": "$$",
         "founder": {
           "@type": "Person",
