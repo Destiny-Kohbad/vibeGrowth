@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   ArrowLeft, 
@@ -33,6 +34,8 @@ interface BlogPost {
 }
 
 export default function BlogSection({ onContactClick }: { onContactClick: () => void }) {
+  const { slug } = useParams();
+  const navigate = useNavigate();
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -40,25 +43,18 @@ export default function BlogSection({ onContactClick }: { onContactClick: () => 
 
   const categories = ["All", "Systems", "Conversion", "Marketing", "Case Study"];
 
-  // Check hash on mount to support direct linking to posts (e.g. #blog/some-slug)
   useEffect(() => {
-    const checkHash = () => {
-      const hash = window.location.hash;
-      if (hash.startsWith("#blog/")) {
-        const slug = hash.replace("#blog/", "");
-        const matchedPost = posts.find(p => p.slug === slug);
-        if (matchedPost) {
-          setSelectedPost(matchedPost);
-        }
-      } else if (hash === "#blog") {
-        setSelectedPost(null);
+    if (slug) {
+      const matchedPost = posts.find(p => p.slug === slug);
+      if (matchedPost) {
+        setSelectedPost(matchedPost);
+      } else {
+        navigate("/blog", { replace: true });
       }
-    };
-
-    checkHash();
-    window.addEventListener("hashchange", checkHash);
-    return () => window.removeEventListener("hashchange", checkHash);
-  }, []);
+    } else {
+      setSelectedPost(null);
+    }
+  }, [slug, navigate]);
 
   const posts: BlogPost[] = [
     {
@@ -265,8 +261,7 @@ export default function BlogSection({ onContactClick }: { onContactClick: () => 
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.05 }}
                       onClick={() => {
-                        setSelectedPost(post);
-                        window.location.hash = `#blog/${post.slug}`;
+                        navigate(`/blog/${post.slug}`);
                         window.scrollTo({ top: 0, behavior: "smooth" });
                       }}
                       className="bg-white border border-zinc-200/80 hover:border-blue-300 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer group flex flex-col h-full"
@@ -397,8 +392,8 @@ export default function BlogSection({ onContactClick }: { onContactClick: () => 
               {/* Back CTA */}
               <button
                 onClick={() => {
-                  setSelectedPost(null);
-                  window.location.hash = "#blog";
+                  navigate("/blog");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-zinc-200 text-zinc-600 hover:text-zinc-950 font-semibold text-xs sm:text-sm tracking-wide transition-all shadow-sm mb-8 cursor-pointer hover:bg-zinc-50"
                 id="blog-back-btn"

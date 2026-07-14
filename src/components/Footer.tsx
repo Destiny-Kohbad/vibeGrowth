@@ -1,23 +1,30 @@
+import { Link, useLocation } from "react-router-dom";
 import { Mail, MessageSquare, ArrowUp, Sparkles, MapPin, Award } from "lucide-react";
 import VibeGrowthLogo from "./VibeGrowthLogo";
 
-interface FooterProps {
-  onSetActiveTab: (tab: string) => void;
-  activeTab: string;
-}
+export default function Footer() {
+  const location = useLocation();
 
-export default function Footer({ onSetActiveTab, activeTab }: FooterProps) {
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const navLinks = [
-    { id: "home", label: "Home Base" },
-    { id: "services", label: "System Services" },
-    { id: "about", label: "Brand Values" },
-    { id: "blog", label: "Blog Insights" },
-    { id: "contact", label: "Request Proposal" }
+    { id: "home", label: "Home Base", path: "/" },
+    { id: "services", label: "System Services", path: "/services" },
+    { id: "portfolio", label: "Portfolio Grid", path: "/portfolio" },
+    { id: "about", label: "Brand Values", path: "/about" },
+    { id: "blog", label: "Blog Insights", path: "/blog" },
+    { id: "contact", label: "Request Proposal", path: "/contact" }
   ];
+
+  const currentPath = location.pathname;
+  let activeTab = "home";
+  if (currentPath === "/services") activeTab = "services";
+  else if (currentPath === "/portfolio") activeTab = "portfolio";
+  else if (currentPath === "/about") activeTab = "about";
+  else if (currentPath.startsWith("/blog")) activeTab = "blog";
+  else if (currentPath === "/contact") activeTab = "contact";
 
   return (
     <footer className="bg-zinc-950 border-t border-zinc-900 relative overflow-hidden" id="page-footer">
@@ -55,10 +62,9 @@ export default function Footer({ onSetActiveTab, activeTab }: FooterProps) {
             <ul className="space-y-2">
               {navLinks.map((item) => (
                 <li key={item.id}>
-                  <button
+                  <Link
+                    to={item.path}
                     onClick={() => {
-                      onSetActiveTab(item.id);
-                      window.location.hash = `#${item.id}`;
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
                     className={`text-xs hover:text-white transition-all cursor-pointer ${
@@ -67,7 +73,7 @@ export default function Footer({ onSetActiveTab, activeTab }: FooterProps) {
                     id={`footer-link-${item.id}`}
                   >
                     {item.label} &rarr;
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>

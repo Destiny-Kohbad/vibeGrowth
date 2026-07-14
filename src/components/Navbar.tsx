@@ -1,33 +1,42 @@
 import { useState } from "react";
-import { Menu, X, PhoneCall, Code, Sparkles, MessageSquare } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, PhoneCall, Sparkles, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import VibeGrowthLogo from "./VibeGrowthLogo";
 
 interface NavbarProps {
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
   onOpenEstimator?: () => void;
 }
 
-export default function Navbar({ activeTab, setActiveTab, onOpenEstimator }: NavbarProps) {
+export default function Navbar({ onOpenEstimator }: NavbarProps) {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const navItems = [
-    { id: "home", label: "Home" },
-    { id: "services", label: "Our Services" },
-    { id: "about", label: "About" },
-    { id: "blog", label: "Blog Insights" },
-    { id: "contact", label: "Contact & Leads" },
+    { id: "home", label: "Home", path: "/" },
+    { id: "services", label: "Our Services", path: "/services" },
+    { id: "portfolio", label: "Portfolio", path: "/portfolio" },
+    { id: "about", label: "About", path: "/about" },
+    { id: "blog", label: "Blog Insights", path: "/blog" },
+    { id: "contact", label: "Contact & Leads", path: "/contact" },
   ];
 
-  const handleMobileClick = (tabId: string, toggleMenu: () => void) => {
-    setActiveTab(tabId);
-    window.location.hash = `#${tabId}`;
+  const currentPath = location.pathname;
+  let activeTab = "home";
+  if (currentPath === "/services") activeTab = "services";
+  else if (currentPath === "/portfolio") activeTab = "portfolio";
+  else if (currentPath === "/about") activeTab = "about";
+  else if (currentPath.startsWith("/blog")) activeTab = "blog";
+  else if (currentPath === "/contact") activeTab = "contact";
+
+  const handleMobileClick = (path: string, toggleMenu: () => void) => {
+    navigate(path);
     toggleMenu();
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleLogoClick = () => {
-    setActiveTab("home");
-    window.location.hash = "#home";
+    navigate("/");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -58,15 +67,14 @@ export default function Navbar({ activeTab, setActiveTab, onOpenEstimator }: Nav
             {navItems.map((item) => {
               const isActive = activeTab === item.id;
               return (
-                <button
+                <Link
                   key={item.id}
+                  to={item.path}
                   onClick={() => {
-                    setActiveTab(item.id);
-                    window.location.hash = `#${item.id}`;
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
                   className={`relative px-4 py-2 rounded-full font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 cursor-pointer ${
-                    isActive ? "text-blue-600" : "text-zinc-600 hover:text-zinc-900"
+                    isActive ? "text-blue-600 font-bold" : "text-zinc-600 hover:text-zinc-900"
                   }`}
                   id={`nav-item-${item.id}`}
                 >
@@ -78,7 +86,7 @@ export default function Navbar({ activeTab, setActiveTab, onOpenEstimator }: Nav
                     />
                   )}
                   {item.label}
-                </button>
+                </Link>
               );
             })}
           </nav>
@@ -124,9 +132,9 @@ export default function Navbar({ activeTab, setActiveTab, onOpenEstimator }: Nav
 
 // Inner helper client Component for handling mobile toggle state cleanly in React
 function MobileNavToggle({ navItems, activeTab, handleMobileClick, onOpenEstimator }: {
-  navItems: Array<{id: string, label: string}>,
+  navItems: Array<{id: string, label: string, path: string}>,
   activeTab: string,
-  handleMobileClick: (tabId: string, toggle: () => void) => void,
+  handleMobileClick: (path: string, toggle: () => void) => void,
   onOpenEstimator?: () => void
 }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -169,8 +177,8 @@ function MobileNavToggle({ navItems, activeTab, handleMobileClick, onOpenEstimat
                 return (
                   <button
                     key={item.id}
-                    onClick={() => handleMobileClick(item.id, toggleMenu)}
-                    className={`w-full text-left px-4 py-3 rounded-xl font-medium text-sm transition-all flex items-center justify-between ${
+                    onClick={() => handleMobileClick(item.path, toggleMenu)}
+                    className={`w-full text-left px-4 py-3 rounded-xl font-medium text-sm transition-all flex items-center justify-between cursor-pointer ${
                       isActive 
                         ? "bg-blue-50 text-blue-600 border-l-4 border-blue-600 font-bold" 
                         : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900"

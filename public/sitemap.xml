@@ -7,55 +7,61 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://vibegrowthsolution.com/#services</loc>
+    <loc>https://vibegrowthsolution.com/services</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vibegrowthsolution.com/#about</loc>
+    <loc>https://vibegrowthsolution.com/portfolio</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vibegrowthsolution.com/#blog</loc>
+    <loc>https://vibegrowthsolution.com/about</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vibegrowthsolution.com/blog</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://vibegrowthsolution.com/#contact</loc>
+    <loc>https://vibegrowthsolution.com/contact</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://vibegrowthsolution.com/#blog/introducing-vibegrowth-solution-custom-digital-ecosystems-ceo-destiny-ayeni</loc>
+    <loc>https://vibegrowthsolution.com/blog/introducing-vibegrowth-solution-custom-digital-ecosystems-ceo-destiny-ayeni</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://vibegrowthsolution.com/#blog/vibegrowth-solution-philosophy-systems-not-websites</loc>
+    <loc>https://vibegrowthsolution.com/blog/vibegrowth-solution-philosophy-systems-not-websites</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vibegrowthsolution.com/#blog/custom-react-advantage-versus-builder-templates</loc>
+    <loc>https://vibegrowthsolution.com/blog/custom-react-advantage-versus-builder-templates</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vibegrowthsolution.com/#blog/scale-small-business-integrated-digital-funnel</loc>
+    <loc>https://vibegrowthsolution.com/blog/scale-small-business-integrated-digital-funnel</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vibegrowthsolution.com/#blog/case-study-local-service-leads-boost</loc>
+    <loc>https://vibegrowthsolution.com/blog/case-study-local-service-leads-boost</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

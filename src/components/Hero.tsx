@@ -1,13 +1,14 @@
+import { Link, useNavigate } from "react-router-dom";
 import { MessageSquare, ArrowRight, Zap, Play, Sparkles, CheckCircle2, TrendingUp } from "lucide-react";
 import { motion } from "motion/react";
 import VibeGrowthLogo from "./VibeGrowthLogo";
 
 interface HeroProps {
-  onSetActiveTab: (tab: string) => void;
   onOpenEstimator?: () => void;
 }
 
-export default function Hero({ onSetActiveTab, onOpenEstimator }: HeroProps) {
+export default function Hero({ onOpenEstimator }: HeroProps) {
+  const navigate = useNavigate();
   const stats = [
     { value: "48h-72h", label: "Average Delivery Time" },
     { value: "+240%", label: "Average Traffic Boost" },
@@ -121,8 +122,7 @@ export default function Hero({ onSetActiveTab, onOpenEstimator }: HeroProps) {
 
               <button
                 onClick={() => {
-                  onSetActiveTab("services");
-                  window.location.hash = "#services";
+                  navigate("/services");
                 }}
                 className="py-4 px-8 rounded-xl bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 text-zinc-900 font-bold text-sm sm:text-base flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer"
                 id="hero-services-btn"
