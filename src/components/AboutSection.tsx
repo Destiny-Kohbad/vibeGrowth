@@ -1,3 +1,5 @@
+"use client";
+
 import { Sparkles, Milestone, CheckCircle, ShieldCheck, Zap, TrendingUp } from "lucide-react";
 import { motion } from "motion/react";
 

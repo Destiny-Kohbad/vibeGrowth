@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Sparkles, ArrowRight, ShieldCheck, Zap } from "lucide-react";
 import { motion } from "motion/react";

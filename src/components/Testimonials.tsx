@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Star, ChevronLeft, ChevronRight, Quote, CheckCircle, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";

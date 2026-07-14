@@ -1,14 +1,25 @@
-import { Link, useNavigate } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { MessageSquare, ArrowRight, Zap, Play, Sparkles, CheckCircle2, TrendingUp } from "lucide-react";
 import { motion } from "motion/react";
 import VibeGrowthLogo from "./VibeGrowthLogo";
+import { useEstimator } from "./EstimatorContext";
 
 interface HeroProps {
   onOpenEstimator?: () => void;
 }
 
 export default function Hero({ onOpenEstimator }: HeroProps) {
-  const navigate = useNavigate();
+  const router = useRouter();
+  
+  let context: any;
+  try {
+    context = useEstimator();
+  } catch (e) {}
+  const activeOnOpenEstimator = onOpenEstimator || (() => context?.setIsEstimatorOpen(true));
+
   const stats = [
     { value: "48h-72h", label: "Average Delivery Time" },
     { value: "+240%", label: "Average Traffic Boost" },
@@ -122,7 +133,7 @@ export default function Hero({ onOpenEstimator }: HeroProps) {
 
               <button
                 onClick={() => {
-                  navigate("/services");
+                  router.push("/services");
                 }}
                 className="py-4 px-8 rounded-xl bg-zinc-50 border border-zinc-200 hover:bg-zinc-100 text-zinc-900 font-bold text-sm sm:text-base flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer"
                 id="hero-services-btn"
@@ -133,12 +144,12 @@ export default function Hero({ onOpenEstimator }: HeroProps) {
             </motion.div>
 
             {/* Micro Estimate Prompt */}
-            {onOpenEstimator && (
+            {activeOnOpenEstimator && (
               <motion.button
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
-                onClick={onOpenEstimator}
+                onClick={activeOnOpenEstimator}
                 className="text-xs text-zinc-500 hover:text-blue-600 inline-flex items-center gap-1.5 transition-colors font-mono cursor-pointer"
                 id="hero-estimator-prompt"
               >

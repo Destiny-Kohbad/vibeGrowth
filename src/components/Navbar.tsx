@@ -1,16 +1,26 @@
+"use client";
+
 import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, PhoneCall, Sparkles, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import VibeGrowthLogo from "./VibeGrowthLogo";
+import { useEstimator } from "./EstimatorContext";
 
 interface NavbarProps {
   onOpenEstimator?: () => void;
 }
 
 export default function Navbar({ onOpenEstimator }: NavbarProps) {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  let context: any;
+  try {
+    context = useEstimator();
+  } catch (e) {}
+  const activeOnOpenEstimator = onOpenEstimator || (() => context?.setIsEstimatorOpen(true));
 
   const navItems = [
     { id: "home", label: "Home", path: "/" },
@@ -21,7 +31,7 @@ export default function Navbar({ onOpenEstimator }: NavbarProps) {
     { id: "contact", label: "Contact & Leads", path: "/contact" },
   ];
 
-  const currentPath = location.pathname;
+  const currentPath = pathname || "/";
   let activeTab = "home";
   if (currentPath === "/services") activeTab = "services";
   else if (currentPath === "/portfolio") activeTab = "portfolio";
@@ -30,13 +40,13 @@ export default function Navbar({ onOpenEstimator }: NavbarProps) {
   else if (currentPath === "/contact") activeTab = "contact";
 
   const handleMobileClick = (path: string, toggleMenu: () => void) => {
-    navigate(path);
+    router.push(path);
     toggleMenu();
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleLogoClick = () => {
-    navigate("/");
+    router.push("/");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -69,7 +79,7 @@ export default function Navbar({ onOpenEstimator }: NavbarProps) {
               return (
                 <Link
                   key={item.id}
-                  to={item.path}
+                  href={item.path}
                   onClick={() => {
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
@@ -93,9 +103,9 @@ export default function Navbar({ onOpenEstimator }: NavbarProps) {
 
           {/* CTA Group Buttons */}
           <div className="hidden lg:flex items-center gap-3" id="desktop-cta-group">
-            {onOpenEstimator && (
+            {activeOnOpenEstimator && (
               <button
-                onClick={onOpenEstimator}
+                onClick={activeOnOpenEstimator}
                 className="px-4 py-2 rounded-xl bg-white border border-zinc-200 text-xs font-semibold hover:bg-zinc-50 text-zinc-800 inline-flex items-center gap-1.5 transition-all cursor-pointer shadow-sm"
                 id="navbar-estimator-btn"
               >
@@ -121,7 +131,7 @@ export default function Navbar({ onOpenEstimator }: NavbarProps) {
             navItems={navItems}
             activeTab={activeTab}
             handleMobileClick={handleMobileClick}
-            onOpenEstimator={onOpenEstimator}
+            onOpenEstimator={activeOnOpenEstimator}
           />
 
         </div>

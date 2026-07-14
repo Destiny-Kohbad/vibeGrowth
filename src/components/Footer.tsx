@@ -1,9 +1,12 @@
-import { Link, useLocation } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Mail, MessageSquare, ArrowUp, Sparkles, MapPin, Award } from "lucide-react";
 import VibeGrowthLogo from "./VibeGrowthLogo";
 
 export default function Footer() {
-  const location = useLocation();
+  const pathname = usePathname();
 
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -18,7 +21,7 @@ export default function Footer() {
     { id: "contact", label: "Request Proposal", path: "/contact" }
   ];
 
-  const currentPath = location.pathname;
+  const currentPath = pathname || "/";
   let activeTab = "home";
   if (currentPath === "/services") activeTab = "services";
   else if (currentPath === "/portfolio") activeTab = "portfolio";
@@ -63,7 +66,7 @@ export default function Footer() {
               {navLinks.map((item) => (
                 <li key={item.id}>
                   <Link
-                    to={item.path}
+                    href={item.path}
                     onClick={() => {
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
