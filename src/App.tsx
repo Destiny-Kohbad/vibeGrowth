@@ -56,6 +56,220 @@ export default function App() {
     window.scrollTo({ top: 0});
   }, [activeTab]);
 
+  // Dynamic SEO and Meta tags manager for search engines & AI crawlers
+  useEffect(() => {
+    const updateSEO = () => {
+      const hash = window.location.hash;
+      const origin = window.location.origin;
+
+      let title = "VibeGrowth Solution | We Build Digital Systems That Grow Your Business Online";
+      let desc = "We Build Digital Systems That Grow Your Business Online. No templates or generic designs. VibeGrowth Solution, led by Founder & CEO Destiny Ayeni, crafts high-converting funnels, custom web systems, and email marketing triggers.";
+      let url = `${origin}/#home`;
+      let schema: any = null;
+
+      // Check if it's the specific blog post
+      if (hash.includes("introducing-vibegrowth-solution-custom-digital-ecosystems-ceo-destiny-ayeni")) {
+        title = "Introducing VibeGrowth Solution: Custom Web Systems & Funnels under CEO Destiny Ayeni";
+        desc = "Official introduction to VibeGrowth Solution under CEO Destiny Ayeni. Learn about our custom-coded web systems, interactive lead estimators, and automated marketing flows.";
+        url = `${origin}/${hash}`;
+        schema = {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": "Introducing VibeGrowth Solution: Leading Custom Web Systems & Funnels under CEO Destiny Ayeni",
+          "description": "VibeGrowth Solution, under the leadership of Founder & CEO Destiny Ayeni, establishes a new standard for custom-coded, high-performance web systems and automated triggers.",
+          "image": `${origin}/social-preview.png`,
+          "datePublished": "2026-07-14",
+          "url": url,
+          "author": {
+            "@type": "Person",
+            "name": "Destiny Ayeni",
+            "jobTitle": "Founder & CEO"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "VibeGrowth Solution",
+            "logo": {
+              "@type": "ImageObject",
+              "url": `${origin}/favicon-512x512.png`
+            }
+          }
+        };
+      } else if (hash.startsWith("#blog/") && hash.length > 6) {
+        const slug = hash.replace("#blog/", "");
+        // Clean title from slug
+        const cleanTitle = slug
+          .split("-")
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ");
+        title = `${cleanTitle} | VibeGrowth Solution Blog`;
+        desc = `Read article ${cleanTitle} by CEO Destiny Ayeni on the official VibeGrowth Solution website. Advanced digital funnels, speed, and Klaviyo setups.`;
+        url = `${origin}/${hash}`;
+        schema = {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": title,
+          "description": desc,
+          "image": `${origin}/social-preview.png`,
+          "datePublished": "2026-07-14",
+          "url": url,
+          "author": {
+            "@type": "Person",
+            "name": "Destiny Ayeni",
+            "jobTitle": "Founder & CEO"
+          }
+        };
+      } else if (activeTab === "blog") {
+        title = "Blog & Marketing Insights | VibeGrowth Solution - CEO Destiny Ayeni";
+        desc = "Explore expert articles on high-performance React design, Klaviyo triggers, speed optimization, and modern customer acquisition systems by CEO Destiny Ayeni.";
+        url = `${origin}/#blog`;
+        schema = {
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          "name": "VibeGrowth Solution Insights Blog",
+          "alternateName": ["vibegrowthsolution", "Vibegrowth Solution"],
+          "description": "Insightful publications on custom web systems, performance optimization, and automation triggers, curated by CEO Destiny Ayeni.",
+          "publisher": {
+            "@type": "ProfessionalService",
+            "name": "VibeGrowth Solution",
+            "url": origin,
+            "logo": `${origin}/favicon-512x512.png`
+          }
+        };
+      } else if (activeTab === "services") {
+        title = "Our Systems & Services | VibeGrowth Solution by CEO Destiny Ayeni";
+        desc = "Explore professional custom development services led by CEO Destiny Ayeni. Custom web systems, interactive estimators, Klaviyo triggers, and conversion-focused design.";
+        url = `${origin}/#services`;
+        schema = {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "provider": {
+            "@type": "ProfessionalService",
+            "name": "VibeGrowth Solution",
+            "alternateName": ["vibegrowthsolution", "Vibegrowth Solution"],
+            "url": origin,
+            "logo": `${origin}/favicon-512x512.png`
+          },
+          "serviceType": "Custom Web Systems & Automation Design",
+          "name": "VibeGrowth Engineering Services",
+          "description": "Premium full-stack custom React applications, tailored CRM/Klaviyo automation triggers, and gamified lead qualifier systems built by VibeGrowth Solution."
+        };
+      } else if (activeTab === "about") {
+        title = "About Founder & CEO Destiny Ayeni | VibeGrowth Solution";
+        desc = "Meet Destiny Ayeni, Founder & CEO of VibeGrowth Solution. Discover our core design philosophy of building robust digital systems that act as customer acquisition engines.";
+        url = `${origin}/#about`;
+        schema = {
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "mainEntity": {
+            "@type": "Person",
+            "name": "Destiny Ayeni",
+            "jobTitle": "Founder & CEO of VibeGrowth Solution",
+            "description": "Destiny Ayeni is the CEO of VibeGrowth Solution, designing custom digital ecosystems and automations that transform standard websites into acquisition assets.",
+            "image": `${origin}/favicon-512x512.png`
+          },
+          "publisher": {
+            "@type": "ProfessionalService",
+            "name": "VibeGrowth Solution",
+            "url": origin
+          }
+        };
+      } else if (activeTab === "contact") {
+        title = "Contact VibeGrowth Solution | Request System Proposal under CEO Destiny Ayeni";
+        desc = "Request a custom digital proposal or use our automated price estimator. Connect directly with CEO Destiny Ayeni and our expert engineering team.";
+        url = `${origin}/#contact`;
+        schema = {
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "mainEntity": {
+            "@type": "ProfessionalService",
+            "name": "VibeGrowth Solution",
+            "alternateName": ["vibegrowthsolution", "Vibegrowth Solution"],
+            "url": origin,
+            "telephone": "+17042145434"
+          }
+        };
+      } else {
+        // Default home settings
+        title = "VibeGrowth Solution | Custom Web Systems, Funnels & Automations by CEO Destiny Ayeni";
+        desc = "We build digital systems that grow your business online under Founder & CEO Destiny Ayeni. Custom web systems, automated lead qualifiers, and synchronized email flows.";
+        url = `${origin}/#home`;
+        schema = {
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          "name": "VibeGrowth Solution",
+          "alternateName": ["vibegrowthsolution", "Vibegrowth Solution"],
+          "description": "VibeGrowth Solution, led by Founder & CEO Destiny Ayeni, builds custom-coded web systems, interactive lead estimators, and automated marketing flows.",
+          "url": origin,
+          "logo": `${origin}/favicon-512x512.png`,
+          "image": `${origin}/social-preview.png`,
+          "telephone": "+17042145434",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Charlotte",
+            "addressRegion": "NC",
+            "postalCode": "28202",
+            "addressCountry": "US"
+          },
+          "founder": {
+            "@type": "Person",
+            "name": "Destiny Ayeni",
+            "jobTitle": "Founder & CEO"
+          }
+        };
+      }
+
+      // Apply to document
+      document.title = title;
+
+      const updateMeta = (attribute: string, attrValue: string, content: string) => {
+        let el = document.querySelector(`meta[${attribute}="${attrValue}"]`);
+        if (!el) {
+          el = document.createElement("meta");
+          el.setAttribute(attribute, attrValue);
+          document.head.appendChild(el);
+        }
+        el.setAttribute("content", content);
+      };
+
+      updateMeta("name", "description", desc);
+      updateMeta("property", "og:title", title);
+      updateMeta("property", "og:description", desc);
+      updateMeta("property", "og:url", url);
+      updateMeta("property", "og:image", `${origin}/social-preview.png`);
+      
+      updateMeta("name", "twitter:title", title);
+      updateMeta("name", "twitter:description", desc);
+      updateMeta("name", "twitter:url", url);
+      updateMeta("name", "twitter:image", `${origin}/social-preview.png`);
+
+      // Update Canonical Link
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement("link");
+        canonical.setAttribute("rel", "canonical");
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute("href", url);
+
+      // Update JSON-LD Script
+      if (schema) {
+        let schemaScript = document.getElementById("dynamic-schema") as HTMLScriptElement;
+        if (!schemaScript) {
+          schemaScript = document.createElement("script");
+          schemaScript.id = "dynamic-schema";
+          schemaScript.type = "application/ld+json";
+          document.head.appendChild(schemaScript);
+        }
+        schemaScript.textContent = JSON.stringify(schema, null, 2);
+      }
+    };
+
+    updateSEO();
+    window.addEventListener("hashchange", updateSEO);
+    return () => window.removeEventListener("hashchange", updateSEO);
+  }, [activeTab]);
+
   return (
     <div className="bg-white min-h-screen relative font-sans text-zinc-900 overflow-x-hidden selection:bg-blue-100 selection:text-zinc-900" id="vibe-growth-app">
       

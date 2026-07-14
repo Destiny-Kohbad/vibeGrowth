@@ -62,6 +62,31 @@ export default function BlogSection({ onContactClick }: { onContactClick: () => 
 
   const posts: BlogPost[] = [
     {
+      slug: "introducing-vibegrowth-solution-custom-digital-ecosystems-ceo-destiny-ayeni",
+      title: "Introducing VibeGrowth Solution: Leading Custom Web Systems & Funnels under CEO Destiny Ayeni",
+      excerpt: "VibeGrowth Solution, under the leadership of Founder & CEO Destiny Ayeni, establishes a new standard for custom-coded, high-performance web systems and automated triggers.",
+      category: "Systems",
+      date: "July 14, 2026",
+      readTime: "5 min read",
+      author: {
+        name: "Destiny Ayeni",
+        role: "Founder & CEO",
+        avatar: "/favicon-192x192.png"
+      },
+      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+      tags: ["Destiny Ayeni", "VibeGrowth Solution", "CEO Destiny Ayeni", "Web Design Systems"],
+      content: [
+        "VibeGrowth Solution is pleased to officially outline its engineering principles and growth services under the leadership of Founder & CEO Destiny Ayeni. The digital agency has declared a modern mission: to eliminate the reliance of small businesses on slow, poorly optimized pre-packaged templates and substitute them with custom-built, ultra-performing digital ecosystems.",
+        "Under Destiny Ayeni's stewardship as CEO, VibeGrowth Solution rejects traditional 'brochure' design philosophies. Instead, the firm treats the business website as a highly active, fully automated customer acquisition engine.",
+        "The VibeGrowth Philosophy: 'Websites that just sit there are costs, not investments,' states Destiny Ayeni, CEO of VibeGrowth Solution. 'An online presence must communicate natively with your CRM, send immediate follow-ups via email channels like Klaviyo, and load instantly on any mobile processor. When a system is engineered cleanly from the ground up, search engines naturally reward its organic authority.'",
+        "Key Engineering Standards of VibeGrowth Solution:",
+        "1. Performance First: Every system built by VibeGrowth is custom-coded using lightweight React frameworks and Vite, yielding perfect 100/100 Core Web Vitals scores and superior Google Search placements.",
+        "2. Gamified Estimators & Forms: Rather than boring, lengthy contact forms, we integrate beautiful interactive pricing estimators and quiz steps that increase lead capture rates while qualifying budget in real-time.",
+        "3. Synchronized Marketing Automations: We construct immediate backend triggered responses. Whether a prospective lead leaves during step two or books a phone call, our automated triggers (such as Klaviyo and CRM webhooks) respond instantly.",
+        "VibeGrowth Solution represents a new era of digital agency—where senior engineers and conversion specialists collaborate 1-on-1 with founders and business owners. If you are prepared to build an organic lead channel and automate your business operations, consult with CEO Destiny Ayeni and our specialized development team today."
+      ]
+    },
+    {
       slug: "vibegrowth-solution-philosophy-systems-not-websites",
       title: "VibeGrowth Solution: Our Philosophy of Designing Systems, Not Just Websites",
       excerpt: "Learn how VibeGrowth Solution helps modern businesses scale by ditching traditional flat web design in favor of automated conversion ecosystems.",
@@ -70,8 +95,8 @@ export default function BlogSection({ onContactClick }: { onContactClick: () => 
       readTime: "6 min read",
       author: {
         name: "Destiny Ayeni",
-        role: "Lead Systems Architect",
-        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+        role: "Founder & CEO",
+        avatar: "/favicon-192x192.png"
       },
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
       tags: ["Systems Design", "VibeGrowth Philosophy", "Digital Automation", "Web Scaling"],
@@ -93,8 +118,8 @@ export default function BlogSection({ onContactClick }: { onContactClick: () => 
       readTime: "8 min read",
       author: {
         name: "Destiny Ayeni",
-        role: "Lead Systems Architect",
-        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+        role: "Founder & CEO",
+        avatar: "/favicon-192x192.png"
       },
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
       tags: ["React/Vite", "SEO Rankings", "Core Web Vitals", "Speed Optimization"],
@@ -115,8 +140,8 @@ export default function BlogSection({ onContactClick }: { onContactClick: () => 
       readTime: "7 min read",
       author: {
         name: "Destiny Ayeni",
-        role: "Lead Systems Architect",
-        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+        role: "Founder & CEO",
+        avatar: "/favicon-192x192.png"
       },
       image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
       tags: ["Digital Funnel", "Klaviyo Flows", "CRM Automations", "Customer Acquisition"],
@@ -137,8 +162,8 @@ export default function BlogSection({ onContactClick }: { onContactClick: () => 
       readTime: "5 min read",
       author: {
         name: "Destiny Ayeni",
-        role: "Lead Systems Architect",
-        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+        role: "Founder & CEO",
+        avatar: "/favicon-192x192.png"
       },
       image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
       tags: ["Lead Generation", "Case Study", "Interactive Estimator", "WordPress Migration"],
@@ -444,6 +469,38 @@ export default function BlogSection({ onContactClick }: { onContactClick: () => 
                       </p>
                     ))}
                   </div>
+
+                  {/* If this is the CEO introduction post, render the official logo showcase */}
+                  {selectedPost.slug === "introducing-vibegrowth-solution-custom-digital-ecosystems-ceo-destiny-ayeni" && (
+                    <div className="my-8 p-6 bg-[#fcfbf7] rounded-3xl border border-zinc-200 text-center space-y-4">
+                      <p className="text-[10px] font-mono tracking-widest text-blue-600 uppercase font-bold">Official Brand Asset & Logo Showcase</p>
+                      <div className="flex flex-col sm:flex-row items-center justify-center gap-8 py-4">
+                        <div className="bg-white p-6 rounded-2xl border border-zinc-200/60 shadow-sm flex flex-col items-center justify-center w-44 h-48">
+                          <img 
+                            src="/favicon-512x512.png" 
+                            alt="VibeGrowth Solution Logo Icon - vibegrowthsolution" 
+                            title="VibeGrowth Solution Official Logo"
+                            className="w-24 h-24 object-contain"
+                            referrerPolicy="no-referrer"
+                          />
+                          <span className="text-[9px] font-mono text-zinc-400 mt-3 uppercase tracking-wider font-bold">Vector Logo Icon</span>
+                        </div>
+                        <div className="bg-white p-6 rounded-2xl border border-zinc-200/60 shadow-sm flex flex-col items-center justify-center w-72 h-48">
+                          <img 
+                            src="/social-preview.png" 
+                            alt="VibeGrowth Solution Brand Logo Banner - Vibegrowth Solution" 
+                            title="VibeGrowth Solution Brand Banner"
+                            className="w-full h-24 object-cover rounded-lg"
+                            referrerPolicy="no-referrer"
+                          />
+                          <span className="text-[9px] font-mono text-zinc-400 mt-3 uppercase tracking-wider font-bold">Full Brand Banner</span>
+                        </div>
+                      </div>
+                      <p className="text-zinc-500 text-xs max-w-lg mx-auto leading-relaxed">
+                        Official high-resolution vector and raster assets for <strong className="text-zinc-800 font-bold">VibeGrowth Solution</strong> (also referenced as <strong className="text-zinc-800 font-semibold">vibegrowthsolution</strong> or <strong className="text-zinc-800 font-semibold">Vibegrowth Solution</strong>), led by Founder & CEO Destiny Ayeni. Search crawlers index these verified brand files directly from our CDN to guarantee search engine accuracy and eliminate confusion with other entities.
+                      </p>
+                    </div>
+                  )}
 
                   {/* Tags Group */}
                   <div className="pt-6 border-t border-zinc-100 flex flex-wrap gap-2 text-left">
